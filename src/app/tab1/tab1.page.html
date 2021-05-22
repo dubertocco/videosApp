@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" color="light">
+<ion-content [fullscreen]="true" color="marrom">
   <ion-searchbar placeholder="Buscar"></ion-searchbar>
 
   <ion-item-sliding>
@@ -28,9 +28,9 @@
       </ion-chip>
     </ion-item>
 
-    <ion-item-options side="end">
-      <ion-item-option (click)="exibirAlertaFavorito()">
-        <ion-icon slot="icon-only" name="star"></ion-icon>
+    <ion-item-options side="end" >
+      <ion-item-option color="marromclaro" (click)="exibirAlertaFavorito()">
+        <ion-icon slot="icon-only" name="star" color="primary"></ion-icon>
       </ion-item-option>
     </ion-item-options>
   </ion-item-sliding>
@@ -55,8 +55,8 @@
     </ion-item>
 
     <ion-item-options side="end">
-      <ion-item-option (click)="exibirAlertaFavorito()">
-        <ion-icon slot="icon-only" name="star"></ion-icon>
+      <ion-item-option color="marromclaro"  (click)="exibirAlertaFavorito()">
+        <ion-icon slot="icon-only" name="star" color="primary"></ion-icon>
       </ion-item-option>
     </ion-item-options>
   </ion-item-sliding>
@@ -81,8 +81,8 @@
     </ion-item>
 
     <ion-item-options side="end">
-      <ion-item-option (click)="exibirAlertaFavorito()">
-        <ion-icon slot="icon-only" name="star"></ion-icon>
+      <ion-item-option color="marromclaro"  (click)="exibirAlertaFavorito()">
+        <ion-icon slot="icon-only" name="star" color="primary"></ion-icon>
       </ion-item-option>
     </ion-item-options>
   </ion-item-sliding>

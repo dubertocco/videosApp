@@ -74,5 +74,37 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** marrom **/
+  --ion-color-marrom: #cb7602;
+  --ion-color-marrom-rgb: 203, 118, 2;
+  --ion-color-marrom-contrast: #000000;
+  --ion-color-marrom-contrast-rgb: 0, 0, 0;
+  --ion-color-marrom-shade: #b36802;
+  --ion-color-marrom-tint: #d0841b;
+  /** marrom claro**/
+  --ion-color-marromclaro: #f6e6c3;
+  --ion-color-marromclaro-rgb: 246, 230, 195;
+  --ion-color-marromclaro-contrast: #000000;
+  --ion-color-marromclaro-contrast-rgb: 0, 0, 0;
+  --ion-color-marromclaro-shade: #d8caac;
+  --ion-color-marromclaro-tint: #f7e9c9;
 }
 
+.ion-color-marrom {
+  --ion-color-base: var(--ion-color-marrom);
+  --ion-color-base-rgb: var(--ion-color-marrom-rgb);
+  --ion-color-contrast: var(--ion-color-marrom-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-marrom-contrast-rgb);
+  --ion-color-shade: var(--ion-color-marrom-shade);
+  --ion-color-tint: var(--ion-color-marrom-tint);
+}
+
+.ion-color-marromclaro {
+  --ion-color-base: var(--ion-color-marromclaro);
+  --ion-color-base-rgb: var(--ion-color-marromclaro-rgb);
+  --ion-color-contrast: var(--ion-color-marromclaro-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-marromclaro-contrast-rgb);
+  --ion-color-shade: var(--ion-color-marromclaro-shade);
+  --ion-color-tint: var(--ion-color-marromclaro-tint);
+}
