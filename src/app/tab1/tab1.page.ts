@@ -1,7 +1,9 @@
+import { DadosService } from './../services/dados.service';
 import { IFilme } from '../models/iFIlme.model';
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +22,8 @@ export class Tab1Page {
       duracao: '2h 22m',
       classificacao: 76,
       cartaz: 'https://www.themoviedb.org/t/p/w220_and_h330_face/4BSuFpQ2gd2WtO5ZK1fMjaMPMRc.jpg',
-      generos: ['Drama', 'Crime']
+      generos: ['Drama', 'Crime'],
+      pagina: '/um-sonho-de-liberdade'
     },
     {
       nome: 'À Espera de Um Milagre ',
@@ -28,7 +31,8 @@ export class Tab1Page {
       duracao: '3h 9m',
       classificacao: 85,
       cartaz: 'https://www.themoviedb.org/t/p/w220_and_h330_face/2RKjFMIlb3UmvUtxeM1uzS0WMhG.jpg',
-      generos: ['Fantasia', 'Drama', 'Crime']
+      generos: ['Fantasia', 'Drama', 'Crime'],
+      pagina: '/um-sonho-de-liberdade'
     },
     {
       nome: 'A Vida é Bela',
@@ -36,11 +40,21 @@ export class Tab1Page {
       duracao: '1h 56m',
       classificacao: 85,
       cartaz: 'https://www.themoviedb.org/t/p/w220_and_h330_face/h8PEObIiYUo4wHGo2qgWge2wqzv.jpg',
-      generos: ['Comédia', 'Drama']
+      generos: ['Comédia', 'Drama'],
+      pagina: 'a-vida-e-bela'
     }
   ];
 
-  constructor(public alertController: AlertController, public toastController: ToastController) { }
+  constructor(
+    public alertController: AlertController,
+    public toastController: ToastController,
+    public dadosService: DadosService,
+    public route: Router) { }
+
+  exibirFilme(filme: IFilme) {
+    this.dadosService.guardarDados('filme', filme);
+    this.route.navigateByUrl('/dados-filme');
+  }
 
   async exibirAlertaFavorito() {
     const alert = await this.alertController.create({
