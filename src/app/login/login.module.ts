@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AVidaEBelaPageRoutingModule } from './a-vida-e-bela-routing.module';
+import { LoginPageRoutingModule } from './login-routing.module';
 
-import { AVidaEBelaPage } from './a-vida-e-bela.page';
+import { LoginPage } from './login.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AVidaEBelaPageRoutingModule
+    LoginPageRoutingModule
   ],
-  declarations: [AVidaEBelaPage]
+  declarations: [LoginPage]
 })
-export class AVidaEBelaPageModule {}
+export class LoginPageModule {}
