@@ -1,6 +1,9 @@
+import { GeneroService } from './../services/genero.service';
+import { IListaFilmes, IFilmeApi } from './../models/IFilmeAPI.model';
+import { FilmeService } from './../services/filme.service';
 import { DadosService } from './../services/dados.service';
 import { IFilme } from '../models/iFIlme.model';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -11,9 +14,9 @@ import { Router } from '@angular/router';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
 
-  titulo: 'Videos App1';
+  titulo: 'Filmes';
 
   listaVideos: IFilme[] = [
     {
@@ -42,16 +45,52 @@ export class Tab1Page {
       cartaz: 'https://www.themoviedb.org/t/p/w220_and_h330_face/h8PEObIiYUo4wHGo2qgWge2wqzv.jpg',
       generos: ['Comédia', 'Drama'],
       pagina: 'a-vida-e-bela'
+    },
+    {
+      nome: 'Soul',
+      lancamento: '2020',
+      duracao: '1h 40m',
+      classificacao: 83,
+      cartaz: 'https://www.themoviedb.org/t/p/w220_and_h330_face/bzDAfXoqNAvWUe7uss2NE3BmRqy.jpg',
+      generos: ['Família', 'Animação', 'Comédia', 'Drama', 'Música', 'Fantasia'
+      ],
+      pagina: 'a-vida-e-bela'
+    },
+    {
+      nome: 'Coringa',
+      lancamento: '2019',
+      duracao: '2h 2m',
+      classificacao: 82,
+      cartaz: 'https://www.themoviedb.org/t/p/w220_and_h330_face/xLxgVxFWvb9hhUyCDDXxRPPnFck.jpg',
+      generos: ['Crime', 'Thriller', 'Drama'],
+      pagina: 'a-vida-e-bela'
     }
   ];
+
+  listaFilmes: IListaFilmes;
+
+  generos: string[] = [];
 
   constructor(
     public alertController: AlertController,
     public toastController: ToastController,
     public dadosService: DadosService,
+    public filmeService: FilmeService,
+    public generoService: GeneroService,
     public route: Router) { }
 
-  exibirFilme(filme: IFilme) {
+  buscarFilmes(evento: any) {
+    console.log(evento.target.value);
+    const busca = evento.target.value;
+    if (busca && busca.trim() !== '') {
+      this.filmeService.buscarFilmes(busca).subscribe(dados => {
+        console.log(dados);
+        this.listaFilmes = dados;
+      });
+    }
+  }
+
+  exibirFilme(filme: IFilmeApi) {
     this.dadosService.guardarDados('filme', filme);
     this.route.navigateByUrl('/dados-filme');
   }
@@ -88,4 +127,14 @@ export class Tab1Page {
     toast.present();
   }
 
+  ngOnInit(){
+    this.generoService.buscarGeneros().subscribe(dados =>{
+      console.log('Generos: ', dados.genres);
+      dados.genres.forEach(genero =>{
+        this.generos[genero.id] = genero.name;
+      });
+
+      this.dadosService.guardarDados('generos',this.generos);
+    });
+  }
 }
