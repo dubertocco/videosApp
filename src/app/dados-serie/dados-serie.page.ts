@@ -1,3 +1,5 @@
+import { ISerieApi } from './../models/ISerieAPI.model';
+import { DadosService } from './../services/dados.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DadosSeriePage implements OnInit {
 
-  constructor() { }
+  serie: ISerieApi;
+
+  generos: string[] = [];
+
+  constructor(public dadosService: DadosService) { }
 
   ngOnInit() {
+    this.serie = this.dadosService.pegarDados('serie');
+    this.generos = this.dadosService.pegarDados('generos');
+    console.log('Série enviada', this.serie);
   }
 
 }
